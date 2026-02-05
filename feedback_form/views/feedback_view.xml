@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- FORM VIEW -->
+    <record id="view_feedback_form" model="ir.ui.view">
+        <field name="name">feedback.form.form</field>
+        <field name="model">feedback.form</field>
+        <field name="arch" type="xml">
+            <form string="Feedback Form">
+                <header>
+                    <button name="action_mark_reviewed"
+                            type="object"
+                            string="Mark as Reviewed"
+                            class="btn-primary"
+                            invisible="state == 'reviewed'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    ...
+                </sheet>
+
+                <sheet>
+                    <group>
+                        <field name="full_name" readonly="state == 'reviewed'"/>
+                        <field name="email" readonly="state == 'reviewed'"/>
+                        <field name="phone" readonly="state == 'reviewed'"/>
+                    </group>
+
+                    <group>
+                        <field name="rating_value" readonly="state == 'reviewed'"/>
+                        <field name="rating_stars" readonly="1"/>
+                        <field name="priority" readonly="1"/>
+                    </group>
+
+                    <group>
+                        <field name="comment" readonly="state == 'reviewed'"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- LIST VIEW -->
+    <record id="view_feedback_list" model="ir.ui.view">
+        <field name="name">feedback.form.list</field>
+        <field name="model">feedback.form</field>
+        <field name="arch" type="xml">
+            <list
+                    decoration-danger="priority == '2'"
+                    decoration-warning="priority == '1'"
+                    decoration-success="priority == '0'"
+            >
+                <field name="name"/>
+
+                <field name="full_name"/>
+                <field name="rating_value"/>
+                <field name="rating_stars"/>
+                <field name="priority"/>
+                <field name="state"/>
+                <field name="create_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- KANBAN VIEW -->
+    <record id="view_feedback_kanban" model="ir.ui.view">
+        <field name="name">feedback.form.kanban</field>
+        <field name="model">feedback.form</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="full_name"/>
+                <field name="rating_value"/>
+                <field name="priority"/>
+                <field name="state"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card o_kanban_record o_feedback_card">
+
+                            <!-- Priority Progress Bar -->
+                            <div class="o_priority_progress">
+                                <div class="o_priority_bar"
+                                     t-att-style="
+                                        record.priority.raw_value == '2' and 'width:100%; background-color:#dc3545;' or
+                                        record.priority.raw_value == '1' and 'width:65%; background-color:#ffc107;' or
+                                        record.priority.raw_value == '0' and 'width:35%; background-color:#28a745;'
+                                     "/>
+                            </div>
+
+                            <strong>
+                                <field name="name"/>
+                            </strong>
+
+                            <strong>
+                                <field name="full_name"/>
+                            </strong>
+
+                            <div class="o_rating_stars">
+                                <t t-foreach="Array.from({length: record.rating_value.raw_value || 0})"
+                                   t-as="star"
+                                   t-key="star_index">
+                                    <span>⭐</span>
+                                </t>
+                            </div>
+
+                            <div>
+                                Priority:
+                                <field name="priority"/>
+                            </div>
+
+                            <div>
+                                Status:
+                                <field name="state"/>
+                            </div>
+
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- GRAPH VIEW -->
+    <record id="view_feedback_graph" model="ir.ui.view">
+        <field name="name">feedback.form.graph</field>
+        <field name="model">feedback.form</field>
+        <field name="arch" type="xml">
+            <graph string="Feedback Analysis" type="bar">
+                <field name="id" type="measure"/>
+                <field name="priority" type="row"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- PIVOT VIEW -->
+    <record id="view_feedback_pivot" model="ir.ui.view">
+        <field name="name">feedback.form.pivot</field>
+        <field name="model">feedback.form</field>
+        <field name="arch" type="xml">
+            <pivot string="Feedback Pivot">
+                <field name="priority" type="row"/>
+                <field name="state" type="col"/>
+                <field name="id" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEW -->
+    <record id="view_feedback_search" model="ir.ui.view">
+        <field name="name">feedback.form.search</field>
+        <field name="model">feedback.form</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="full_name"/>
+                <field name="email"/>
+
+                <filter name="new"
+                        string="New"
+                        domain="[('state','=','new')]"/>
+
+                <filter name="five_star"
+                        string="5 Stars"
+                        domain="[('rating_value','=',5)]"/>
+
+                <filter name="high_priority"
+                        string="High Priority"
+                        domain="[('priority','=','2')]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="action_feedback_form" model="ir.actions.act_window">
+        <field name="name">Feedback</field>
+        <field name="res_model">feedback.form</field>
+        <field name="view_mode">kanban,list,graph,pivot,form</field>
+    </record>
+
+    <!-- MENU -->
+    <menuitem id="menu_feedback_root" name="Feedback"/>
+    <menuitem id="menu_feedback_form"
+              name="Feedback Records"
+              parent="menu_feedback_root"
+              action="action_feedback_form"/>
+
+</odoo>

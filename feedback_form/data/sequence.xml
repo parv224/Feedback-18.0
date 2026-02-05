@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="seq_feedback_form" model="ir.sequence">
+        <field name="name">Feedback Reference</field>
+        <field name="code">feedback.form</field>
+        <field name="prefix">FB-</field>
+        <field name="padding">4</field>
+    </record>
+</odoo>
