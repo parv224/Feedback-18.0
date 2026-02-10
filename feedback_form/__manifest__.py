@@ -12,7 +12,7 @@
         "mail"
     ],
 
-    "price": 19.0,
+    "price": 19.00,
     "currency": "EUR",
 
     "data": [
@@ -32,5 +32,6 @@
     "installable": True,
     "application": False,
 }
+
 
 
