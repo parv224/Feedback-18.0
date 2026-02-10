@@ -7,7 +7,7 @@
     "license": "OPL-1",
     "depends": ["base"],
     "price": 29.0,
-'   "currency": "EUR",
+    "currency": "EUR",
 
 
     "data": [
@@ -27,5 +27,6 @@
     "installable": True,
     "application": False,
 }
+
 
 
