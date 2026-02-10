@@ -1,5 +1,5 @@
 {
-    "name": "Feedback Form Test",
+    "name": "Feedback Form",
     "version": "18.0.1.0.0",
     "summary": "Simple feedback form with rating",
     "category": "Tools",
@@ -17,3 +17,4 @@
     "installable": True,
     "application": False,
 }
+
