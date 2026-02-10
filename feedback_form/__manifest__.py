@@ -5,6 +5,7 @@
     "category": "Tools",
     "author": "AppForge",
     "license": "OPL-1",
+    "website": "https://www.odoo.com",
 
     "depends": [
         "base",
@@ -31,4 +32,5 @@
     "installable": True,
     "application": False,
 }
+
 
