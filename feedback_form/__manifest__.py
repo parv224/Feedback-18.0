@@ -4,8 +4,11 @@
     "summary": "Simple feedback form with rating",
     "category": "Tools",
     "author": "AppForge",
-    "license": "LGPL-3",
+    "license": "OPL-1",
     "depends": ["base"],
+    "price": 29.0,
+'   "currency": "EUR",
+
 
     "data": [
         "security/ir.model.access.csv",
@@ -24,4 +27,5 @@
     "installable": True,
     "application": False,
 }
+
 
