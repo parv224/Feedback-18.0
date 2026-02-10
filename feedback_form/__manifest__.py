@@ -5,10 +5,14 @@
     "category": "Tools",
     "author": "AppForge",
     "license": "OPL-1",
-    "depends": ["base"],
+
+    "depends": [
+        "base",
+        "mail"
+    ],
+
     "price": 29.0,
     "currency": "EUR",
-
 
     "data": [
         "security/ir.model.access.csv",
@@ -27,6 +31,3 @@
     "installable": True,
     "application": False,
 }
-
-
-
