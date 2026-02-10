@@ -4,8 +4,16 @@
     "summary": "Simple feedback form with rating",
     "category": "Tools",
     "author": "AppForge",
-    "license": "LGPL-3",
-    "depends": ["base"],
+    "license": "OPL-1",
+    "website": "https://www.odoo.com",
+
+    "depends": [
+        "base",
+        "mail"
+    ],
+
+    "price": 19.0,
+    "currency": "EUR",
 
     "data": [
         "security/ir.model.access.csv",
@@ -24,4 +32,5 @@
     "installable": True,
     "application": False,
 }
+
 
