@@ -1,6 +1,6 @@
 {
     "name": "Feedback Form",
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.0.0","19.0.1.0.0",
     "summary": "Simple feedback form with rating",
     "category": "Tools",
     "author": "AppForge",
@@ -32,6 +32,7 @@
     "installable": True,
     "application": False,
 }
+
 
 
 
