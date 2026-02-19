@@ -7,10 +7,6 @@
     "license": "LGPL-3",
     "website": "https://www.odoo.com",
 
-    "depends": [
-        "base",
-        "mail"
-    ],
 
     "price": 10.0,
     "currency": "EUR",
@@ -32,6 +28,7 @@
     "installable": True,
     "application": False,
 }
+
 
 
 
