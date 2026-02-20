@@ -8,8 +8,8 @@
     "website": "https://www.odoo.com",
 
 
-    "price": 500.0,
-    "currency": "INR",
+    "price": 10.0,
+    "currency": "EUR",
 
     "data": [
         "security/ir.model.access.csv",
