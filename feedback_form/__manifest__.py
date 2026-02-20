@@ -8,7 +8,7 @@
     "website": "https://www.odoo.com",
 
 
-    "price": 10.0,
+    "price": 500.0,
     "currency": "INR",
 
     "data": [
@@ -28,6 +28,7 @@
     "installable": True,
     "application": False,
 }
+
 
 
 
