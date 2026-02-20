@@ -9,7 +9,7 @@
 
 
     "price": 10.0,
-    "currency": "EUR",
+    "currency": "INR",
 
     "data": [
         "security/ir.model.access.csv",
@@ -28,6 +28,7 @@
     "installable": True,
     "application": False,
 }
+
 
 
 
