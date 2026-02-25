@@ -48,12 +48,10 @@ class FeedbackForm(models.Model):
     create_date = fields.Datetime(string="Submitted On", readonly=True)
 
     @api.depends("rating_value")
-    @api.depends("rating_value")
     def _compute_rating_stars(self):
         for record in self:
             record.rating_stars = "⭐" * (record.rating_value or 0)
 
-    @api.depends("rating_value")
     def _compute_priority(self):
         for record in self:
             if record.rating_value in (1, 2):
@@ -107,3 +105,4 @@ class FeedbackForm(models.Model):
                 "feedback.form"
             ) or "New"
         return super().create(vals)
+
